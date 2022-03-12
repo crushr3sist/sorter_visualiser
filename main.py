@@ -24,23 +24,23 @@ class Application(Window):
         # create a text position object
         self.text_pos = (0,0)
         # create a text position object
-        self.text_rect = self.text.get_rect()
-        self.text_rect.center = self.text_pos
-        self.text_rect.top = self.text_pos[1]
-        self.text_rect.left = self.text_pos[0]
-        self.text_rect.bottom = self.text_pos[1]
-        self.text_rect.right = self.text_pos[0]
-        self.text_rect.topleft = self.text_pos
-        self.text_rect.topright = self.text_pos
-        self.text_rect.bottomleft = self.text_pos
-        self.text_rect.bottomright = self.text_pos
-        self.text_rect.midtop = self.text_pos
-        self.text_rect.midleft = self.text_pos
-        self.text_rect.midbottom = self.text_pos
-        self.text_rect.midright = self.text_pos
-        self.text_rect.center = self.text_pos
-        self.text_rect.centerx = self.text_pos
-        self.text_rect.centery = self.text_pos
+        # self.text_rect = self.text.get_rect()
+        # self.text_rect.center = self.text_pos
+        # self.text_rect.top = self.text_pos[1]
+        # self.text_rect.left = self.text_pos[0]
+        # self.text_rect.bottom = self.text_pos[1]
+        # self.text_rect.right = self.text_pos[0]
+        # self.text_rect.topleft = self.text_pos
+        # self.text_rect.topright = self.text_pos
+        # self.text_rect.bottomleft = self.text_pos
+        # self.text_rect.bottomright = self.text_pos
+        # self.text_rect.midtop = self.text_pos
+        # self.text_rect.midleft = self.text_pos
+        # self.text_rect.midbottom = self.text_pos
+        # self.text_rect.midright = self.text_pos
+        # self.text_rect.center = self.text_pos
+        # self.text_rect.centerx = self.text_pos
+        # self.text_rect.centery = self.text_pos
 
     # main loop
     def run(self) -> None:
@@ -80,6 +80,7 @@ class Application(Window):
     def update(self) -> None:
         # update the sorter
         self.sorter.update()
+        
     # draw the game
     def draw(self) -> None:
         # clear the screen
@@ -90,6 +91,7 @@ class Application(Window):
         self.window.draw_text(self.text, self.text_rect)
         # update the display
         self.window.update()
+        
     # reset the application
     def reset(self) -> None:
         # reset the sorter
@@ -99,6 +101,23 @@ class Application(Window):
         # reset the text position
         self.text_pos = (0,0)
         # reset the text rectangle
+        # self.text_rect = self.text.get_rect()
+        # self.text_rect.center = self.text_pos
+        # self.text_rect.top = self.text_pos[1]
+        # self.text_rect.left = self.text_pos[0]
+        # self.text_rect.bottom = self.text_pos[1]
+        # self.text_rect.right = self.text_pos[0]
+        # self.text_rect.topleft = self.text_pos
+        # self.text_rect.topright = self.text_pos
+        # self.text_rect.bottomleft = self.text_pos
+        # self.text_rect.bottomright = self.text_pos
+        # self.text_rect.midtop = self.text_pos
+        # self.text_rect.midleft = self.text_pos
+        # self.text_rect.midbottom = self.text_pos
+        # self.text_rect.midright = self.text_pos
+        # self.text_rect.center = self.text_pos
+        # self.text_rect.centerx = self.text_pos
+        # self.text_rect.centery = self.text_pos
 
     def get_random_array(self, size: int) -> list:
         return [random.randint(0,100) for i in range(size)]
