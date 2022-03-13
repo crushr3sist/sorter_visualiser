@@ -5,7 +5,7 @@ import random, timeit
 class Sorter:
     def __init__(self, arr: list):
         self.arr = arr
-
+    
     def bubble_sort(self) -> list:
         for i in range(len(self.arr)):
             for j in range(len(self.arr)-1):
