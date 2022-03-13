@@ -12,7 +12,7 @@ class Window(Graph):
         # run the initialise function
         self.screen = self.init_window()
         # create a sorter object
-        super().__init__(Array)
+        super().__init__(width, height, Array)
 
     # initaliser function
     def init_window(self) -> pygame.Surface:

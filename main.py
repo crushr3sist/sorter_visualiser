@@ -5,11 +5,11 @@ from src.window import Window
 class Application(Window):
     # initialise the application
     def __init__(self, width: int, height: int) -> None:
-        super().__init__(width, height, self.get_random_array(10))
         # define screen size
         self.width  = width
 
         self.height = height
+        super().__init__(self.width, self.height, self.get_random_array(self.height, self.width))
         # create a window object
         # create a clock object
         self.clock = pygame.time.Clock()
@@ -17,6 +17,8 @@ class Application(Window):
         self.font = pygame.font.SysFont("monospace", 15)
         # create a text object
         self.text = self.font.render("", 1, (255,255,255))
+        
+        
     # main loop
     def run(self) -> None:
         # run the main loop
@@ -68,9 +70,11 @@ class Application(Window):
 
     def inital_state(self) -> None:
         self.screen.fill(self.bg_colour)
-        self.load_columns()
-    def get_random_array(self, size: int) -> list:
-        return [random.randint(0,100) for i in range(size)]
+        self.draw_columns(self.create_columns(self.get_random_array(self.height, self.width)))
+        
+
+    def get_random_array(self, height, width) -> list:
+        return [random.randint(0, height) for i in range(0, width)]
 
 # main function
 if __name__ == "__main__":
