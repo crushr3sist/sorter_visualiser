@@ -1,15 +1,18 @@
 # pygame 
 import pygame
+from src.line_graph import Graph
 
 # game class
-class Window:
+class Window(Graph):
     # initialise the game
-    def __init__(self, width, height) -> None:
+    def __init__(self, width: int, height: int, Array: list) -> None:
         # define screen size
         self.width  = width
         self.height = height
         # run the initialise function
         self.screen = self.init_window()
+        # create a sorter object
+        super().__init__(Array)
 
     # initaliser function
     def init_window(self) -> pygame.Surface:
@@ -30,7 +33,7 @@ class Window:
 # main function
 if __name__ == "__main__":
     # create a game object
-    window = Window(800,600)
+    window = Window(800,600,[1,2,3])
     print(window)
 
 

@@ -13,7 +13,7 @@ class Sorter:
                     self.arr[j], self.arr[j+1] = self.arr[j+1], self.arr[j]
         return self.arr
 
-    def selection_sort(self):
+    def selection_sort(self) -> list:
         for i in range(len(self.arr)):
             min_index = i
             for j in range(i+1,len(self.arr)):
@@ -22,7 +22,7 @@ class Sorter:
             self.arr[i], self.arr[min_index] = self.arr[min_index], self.arr[i]
         return self.arr
 
-    def insertion_sort(self):
+    def insertion_sort(self) -> list:
         for i in range(1,len(self.arr)):
             x = self.arr[i]
             j = i
@@ -32,7 +32,7 @@ class Sorter:
             self.arr[j] = x
         return self.arr
 
-    def merge_sort(self):
+    def merge_sort(self) -> list:
         if len(self.arr) > 1:
             mid = len(self.arr)//2
             left = self.arr[:mid]
@@ -67,7 +67,7 @@ class Sorter:
                 k += 1
         return self.arr
 
-    def quick_sort(self):
+    def quick_sort(self) -> list:
         if len(self.arr) > 1:
             self.quick_sort_helper(0, len(self.arr)-1)
         return self.arr
@@ -88,7 +88,7 @@ class Sorter:
         self.arr[i], self.arr[high] = self.arr[high], self.arr[i]
         return i
 
-    def heap_sort(self):
+    def heap_sort(self) -> list:
         for i in range(len(self.arr)):
             self.heapify(len(self.arr)-1-i, len(self.arr)-1-i)
         for i in range(len(self.arr)):
@@ -108,7 +108,7 @@ class Sorter:
             self.arr[index], self.arr[largest] = self.arr[largest], self.arr[index]
             self.heapify(largest, end)
 
-    def counting_sort(self):
+    def counting_sort(self) -> list:
         m = max(self.arr)
         count = [0]*(m+1)
         for i in self.arr:
@@ -120,7 +120,7 @@ class Sorter:
                 i += 1
         return self.arr
 
-    def radix_sort(self):
+    def radix_sort(self) -> list:
         max_length = False
         tmp = -1
         while not max_length:
@@ -136,7 +136,7 @@ class Sorter:
                 self.arr.extend(i)
         return self.arr
 
-    def shell_sort(self):
+    def shell_sort(self) -> list:
         gap = len(self.arr)//2
         while gap > 0:
             for i in range(gap, len(self.arr)):
@@ -149,7 +149,7 @@ class Sorter:
             gap //= 2
         return self.arr
     
-    def cocktail_sort(self):            
+    def cocktail_sort(self) -> list:            
         swapped = True
         start = 0
         end = len(self.arr) - 1
@@ -170,7 +170,7 @@ class Sorter:
             start += 1
         return self.arr
     
-    def bogo_sort(self):
+    def bogo_sort(self) -> list:
         while not self.is_sorted():
             random.shuffle(self.arr)
         return self.arr
