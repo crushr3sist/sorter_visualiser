@@ -21,7 +21,7 @@ class Window(Graph):
         # set the window size
         size = (self.width, self.height)
         # set the window title
-        pygame.display.set_caption("My Game")
+        pygame.display.set_caption(" Sorting Visualiser ")
         # set the window icon
         icon = pygame.image.load("icon.png")
         pygame.display.set_icon(icon)

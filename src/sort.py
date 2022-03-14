@@ -11,6 +11,13 @@ class Sorter:
             for j in range(len(self.arr)-1):
                 if self.arr[j] > self.arr[j+1]:
                     self.arr[j], self.arr[j+1] = self.arr[j+1], self.arr[j]
+                    yield self.arr
+
+    def quick_bubble_sort(self) -> list:
+        for i in range(len(self.arr)):
+            for j in range(len(self.arr)-1):
+                if self.arr[j] > self.arr[j+1]:
+                    self.arr[j], self.arr[j+1] = self.arr[j+1], self.arr[j]
         return self.arr
 
     def selection_sort(self) -> list:

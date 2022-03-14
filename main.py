@@ -1,6 +1,6 @@
 import random, pygame
 from src.window import Window
-
+# TODO - update the readme to confirm animation is working !!!
 # application frontend class
 class Application(Window):
     # initialise the application
@@ -28,9 +28,6 @@ class Application(Window):
             self.clock.tick(60)
             # get the events
             self.events()
-            # update the game
-            # self.update()
-            # draw the game
 
     # get the events
     def events(self) -> None:
@@ -54,19 +51,31 @@ class Application(Window):
                 if event.key == pygame.K_SPACE:
                     # reset the application
                     self.sort_the_array()
+                if event.key == pygame.K_s:
+                    self.animate()
                 if event.key == pygame.K_r:
                     self.reset()
 
     # update the game
     def update(self) -> None:
-        # update the sorter frame
+        pygame.event.pump()
         pygame.display.flip()
         self.screen.fill((0, 0, 0))
 
     def sort_the_array(self) -> None:
         self.array_to_sort = list(self.array_to_sort)
-        self.draw_columns(self.create_columns(tuple(self.bubble_sort())))
+        self.draw_columns(self.create_columns(self.quick_bubble_sort()))
         self.update()
+
+    def animate(self) -> None:
+        # set the tick rate to a lower value
+        self.clock.tick(10)
+        # make a generator for the bubble sort
+        for i in self.bubble_sort():
+            # reassign the array to the generator yield
+            self.array_to_sort = i
+            self.draw_columns(self.create_columns(self.array_to_sort))
+            self.update()
 
     # reset the application
     def reset(self) -> None:
@@ -78,7 +87,7 @@ class Application(Window):
         self.screen.fill(self.bg_colour)
         self.array_to_sort = self.get_random_array(self.height, self.width)
 
-        self.draw_columns(self.create_columns(tuple(self.array_to_sort)))
+        self.draw_columns(self.create_columns(self.array_to_sort))
 
     def get_random_array(self, height, width) -> list:
         return [random.randint(0, height) for i in range(0, width)]
