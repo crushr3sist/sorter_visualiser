@@ -1,4 +1,4 @@
-import random, pygame
+import random, pygame, time
 from src.window import Window
 # TODO - update the readme to confirm animation is working !!!
 # application frontend class
@@ -62,16 +62,11 @@ class Application(Window):
         pygame.display.flip()
         self.screen.fill((0, 0, 0))
 
-    def sort_the_array(self) -> None:
-        self.array_to_sort = list(self.array_to_sort)
-        self.draw_columns(self.create_columns(self.quick_bubble_sort()))
-        self.update()
-
     def animate(self) -> None:
         # set the tick rate to a lower value
-        self.clock.tick(10)
+        self.clock.tick(1)
         # make a generator for the bubble sort
-        for i in self.bubble_sort():
+        for i in self.quick_sort():
             # reassign the array to the generator yield
             self.array_to_sort = i
             self.draw_columns(self.create_columns(self.array_to_sort))
