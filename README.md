@@ -1,7 +1,15 @@
+
+
 # sorter_visualiser
 Sorting Visualiser made in Pygame. 
 # How to use
-## press the "Space" key to initalise and randomise an array 
+## setup
+```py
+pip install pygame
+python main.py
+```
+
+# press the "Space" key to initalise and randomise an array 
 <img src='https://i.imgur.com/rN7Unym.png'>
 
 ## press the "R" key to sort the array 
