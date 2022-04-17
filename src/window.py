@@ -1,4 +1,4 @@
-# pygame 
+# pygame
 import pygame
 from src.line_graph import Graph
 
@@ -7,7 +7,7 @@ class Window(Graph):
     # initialise the game
     def __init__(self, width: int, height: int, Array: list) -> None:
         # define screen size
-        self.width  = width
+        self.width = width
         self.height = height
         # run the initialise function
         self.screen = self.init_window()
@@ -30,10 +30,9 @@ class Window(Graph):
         # return the screen
         return screen
 
+
 # main function
 if __name__ == "__main__":
     # create a game object
-    window = Window(800,600,[1,2,3])
+    window = Window(800, 600, [1, 2, 3])
     print(window)
-
-
