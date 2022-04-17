@@ -10,7 +10,7 @@ from src.window import Window
 # application frontend class
 class Application(Window):
     # initialise the application
-    def __init__(self, width: int, height: int) -> None:
+    def __init__(self, width: int = 0, height: int = 0) -> None:
         # define screen size
         self.width = width
 
@@ -22,7 +22,7 @@ class Application(Window):
         # create a clock object
         self.clock = pygame.time.Clock()
         # create a font object
-        self.font = pygame.font.SysFont("monospace", 15)
+        self.font: pygame.Font = pygame.font.SysFont("monospace", 15)
         # create a text object
         self.text = self.font.render("", 1, (255, 255, 255))
 
@@ -31,7 +31,7 @@ class Application(Window):
         # run the main loop
         while True:
             # get the time
-            self.clock.tick(60)
+            self.clock.tick(int(60))
             # get the events
             self.events()
 
@@ -90,9 +90,8 @@ class Application(Window):
 
         self.draw_columns(self.create_columns(self.array_to_sort))
 
-    def get_random_array(self, height, width) -> list:
+    def get_random_array(self, width: int = 0, height: int = 0) -> list:
         return [random.randint(0, height) for i in range(0, width)]
-
 
 # main function
 if __name__ == "__main__":

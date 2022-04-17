@@ -1,5 +1,5 @@
 # pygame
-import pygame
+import pygame, typing
 
 from src.line_graph import Graph
 
@@ -7,25 +7,25 @@ from src.line_graph import Graph
 # game class
 class Window(Graph):
     # initialise the game
-    def __init__(self, width: int, height: int, Array: list) -> None:
+    def __init__(self, width: int = 0, height: int = 0, Array: list[int] = list(0)) -> None:
         # define screen size
-        self.width = width
-        self.height = height
+        self.width: int = width
+        self.height: int = height
         # run the initialise function
-        self.screen = self.init_window()
+        self.screen: pygame.surface.Surface = self.init_window()
         # create a sorter object
         super().__init__(width, height, Array)
 
     # initaliser function
-    def init_window(self) -> pygame.Surface:
+    def init_window(self) -> pygame.surface.Surface:
         # initialise pygame
         pygame.init()
         # set the window size
-        size = (self.width, self.height)
+        size: tuple = (self.width, self.height)
         # set the window title
         pygame.display.set_caption(" Sorting Visualiser ")
         # set the window icon
-        icon = pygame.image.load("icon.png")
+        icon: pygame.surface.Surface = pygame.image.load("icon.png")
         pygame.display.set_icon(icon)
         # set the window size
         screen = pygame.display.set_mode(size)
