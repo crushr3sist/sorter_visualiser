@@ -5,8 +5,9 @@ Sorting Visualiser made in Pygame.
 # How to use
 ## setup
 ```py
-pip install pygame
-python main.py
+pip install poetry
+poetry install
+python exec.py
 ```
 
 # press the "Space" key to initalise and randomise an array 
