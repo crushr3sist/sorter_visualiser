@@ -1,23 +1,22 @@
-#make a array with random numbers
+# make a array with random numbers
 import random, timeit
 
 # make a sorter class
 class Sorter:
     def __init__(self, arr: list):
         self.arr = arr
-    
+
     def bubble_sort(self) -> list:
         for i in range(len(self.arr)):
-            for j in range(len(self.arr)-1):
-                if self.arr[j] > self.arr[j+1]:
-                    self.arr[j], self.arr[j+1] = self.arr[j+1], self.arr[j]
+            for j in range(len(self.arr) - 1):
+                if self.arr[j] > self.arr[j + 1]:
+                    self.arr[j], self.arr[j + 1] = self.arr[j + 1], self.arr[j]
                     yield self.arr
-
 
     def selection_sort(self) -> list:
         for i in range(len(self.arr)):
             min_index = i
-            for j in range(i+1,len(self.arr)):
+            for j in range(i + 1, len(self.arr)):
                 if self.arr[j] < self.arr[min_index]:
                     min_index = j
             self.arr[i], self.arr[min_index] = self.arr[min_index], self.arr[i]
@@ -26,16 +25,15 @@ class Sorter:
     def insertion_sort(self) -> list:
         for i in range(1, len(self.arr)):
             j = i
-            while j > 0 and self.arr[j] < self.arr[j-1]:
-                self.swap(j, j-1)
+            while j > 0 and self.arr[j] < self.arr[j - 1]:
+                self.swap(j, j - 1)
                 j -= 1
             yield self.arr
-
 
     # merge sort with yield
     def merge_sort(self) -> list:
         if len(self.arr) > 1:
-            mid = len(self.arr)//2
+            mid = len(self.arr) // 2
             left = self.arr[:mid]
             right = self.arr[mid:]
             i = j = k = 0
@@ -57,10 +55,9 @@ class Sorter:
                 k += 1
             yield self.arr
 
-
     # quick sort with yield
     def quick_sort(self) -> list:
-        self.quick_sort_helper(0, len(self.arr)-1)
+        self.quick_sort_helper(0, len(self.arr) - 1)
         yield self.arr
 
     def quick_sort_helper(self, low, high):
@@ -71,7 +68,7 @@ class Sorter:
 
     # quick sort with yield
     def quick_sort_with_pivot(self) -> list:
-        self.quick_sort_with_pivot_helper(0, len(self.arr)-1)
+        self.quick_sort_with_pivot_helper(0, len(self.arr) - 1)
         yield self.arr
 
     def quick_sort_with_pivot_helper(self, low, high):
@@ -102,47 +99,46 @@ class Sorter:
 
     def counting_sort(self) -> list:
         m = max(self.arr)
-        count = [0]*(m+1)
+        count = [0] * (m + 1)
         for i in self.arr:
             count[i] += 1
         i = 0
-        for j in range(m+1):
+        for j in range(m + 1):
             for k in range(count[j]):
                 self.arr[i] = j
                 i += 1
         return self.arr
-    
+
     def radix_sort(self) -> list:
         m = max(self.arr)
         exp = 1
-        while m/exp > 0:
-            count = [0]*10
+        while m / exp > 0:
+            count = [0] * 10
             for i in self.arr:
-                count[i//exp%10] += 1
+                count[i // exp % 10] += 1
             i = 0
-            for j in range(1,10):
-                count[j] += count[j-1]
-            for j in range(len(self.arr)-1, -1, -1):
-                self.arr[count[self.arr[j]//exp%10]-1] = self.arr[j]
-                count[self.arr[j]//exp%10] -= 1
+            for j in range(1, 10):
+                count[j] += count[j - 1]
+            for j in range(len(self.arr) - 1, -1, -1):
+                self.arr[count[self.arr[j] // exp % 10] - 1] = self.arr[j]
+                count[self.arr[j] // exp % 10] -= 1
             exp *= 10
             yield self.arr
-        
 
     def shell_sort(self) -> list:
-        gap = len(self.arr)//2
+        gap = len(self.arr) // 2
         while gap > 0:
             for i in range(gap, len(self.arr)):
                 tmp = self.arr[i]
                 j = i
-                while j >= gap and self.arr[j-gap] > tmp:
-                    self.arr[j] = self.arr[j-gap]
+                while j >= gap and self.arr[j - gap] > tmp:
+                    self.arr[j] = self.arr[j - gap]
                     j -= gap
                 self.arr[j] = tmp
             gap //= 2
             yield self.arr
-    
-    def cocktail_sort(self) -> list:            
+
+    def cocktail_sort(self) -> list:
         swapped = True
         start = 0
         end = len(self.arr) - 1
@@ -164,18 +160,18 @@ class Sorter:
             yield self.arr
 
     def is_sorted(self):
-        return all(self.arr[i] <= self.arr[i+1] for i in range(len(self.arr)-1))
-    
+        return all(self.arr[i] <= self.arr[i + 1] for i in range(len(self.arr) - 1))
+
     def gnome_sort(self) -> list:
         i = 0
         while i < len(self.arr):
-            if i == 0 or self.arr[i-1] <= self.arr[i]:
+            if i == 0 or self.arr[i - 1] <= self.arr[i]:
                 i += 1
             else:
-                self.arr[i], self.arr[i-1] = self.arr[i-1], self.arr[i]
+                self.arr[i], self.arr[i - 1] = self.arr[i - 1], self.arr[i]
                 i -= 1
             yield self.arr
-    
+
     def pancake_sort(self) -> list:
         for i in range(len(self.arr)):
             max_index = self.find_max_index(i)
@@ -184,14 +180,14 @@ class Sorter:
                 self.reverse_array(i)
                 yield self.arr
             yield self.arr
-    
+
     def find_max_index(self, i):
         max_index = i
-        for j in range(i+1, len(self.arr)):
+        for j in range(i + 1, len(self.arr)):
             if self.arr[j] > self.arr[max_index]:
                 max_index = j
         return max_index
-    
+
     def reverse_array(self, i):
         start = i
         end = len(self.arr) - 1
@@ -199,7 +195,7 @@ class Sorter:
             self.arr[start], self.arr[end] = self.arr[end], self.arr[start]
             start += 1
             end -= 1
-    
+
     def cycle_sort(self) -> list:
         for cycle_size in range(len(self.arr), 0, -1):
             for start in range(0, len(self.arr) - cycle_size):
@@ -207,10 +203,10 @@ class Sorter:
                     self.swap(start, start + cycle_size)
                     yield self.arr
         yield self.arr
-    
+
     def swap(self, i, j):
         self.arr[i], self.arr[j] = self.arr[j], self.arr[i]
-    
+
     def comb_sort(self) -> list:
         shrink_factor = 1.247330950103979
         gap = len(self.arr)
@@ -225,7 +221,7 @@ class Sorter:
                     self.arr[i], self.arr[i + gap] = self.arr[i + gap], self.arr[i]
                     swapped = True
             yield self.arr
-    
+
     def odd_even_sort(self) -> list:
         swapped = True
         while swapped:
@@ -239,20 +235,22 @@ class Sorter:
                     self.arr[i], self.arr[i + 1] = self.arr[i + 1], self.arr[i]
                     swapped = True
             yield self.arr
-    
+
     def heap_sort(self) -> list:
         self.build_heap()
         for i in range(len(self.arr) - 1, 0, -1):
             self.arr[i], self.arr[0] = self.arr[0], self.arr[i]
             self.heapify(0, i - 1)
             yield self.arr
+
     def build_heap(self):
         for i in range(len(self.arr) // 2, -1, -1):
             self.heapify(i, len(self.arr) - 1)
+
     def heapify(self, index, end):
         largest = index
-        left = 2*index + 1
-        right = 2*index + 2
+        left = 2 * index + 1
+        right = 2 * index + 2
         if left <= end and self.arr[left] > self.arr[largest]:
             largest = left
         if right <= end and self.arr[right] > self.arr[largest]:
