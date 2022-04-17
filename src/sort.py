@@ -1,5 +1,7 @@
 # make a array with random numbers
-import random, timeit
+import random
+import timeit
+
 
 # make a sorter class
 class Sorter:

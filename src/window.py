@@ -1,6 +1,8 @@
 # pygame
 import pygame
+
 from src.line_graph import Graph
+
 
 # game class
 class Window(Graph):

@@ -1,4 +1,8 @@
-import pygame, random, time
+import random
+import time
+
+import pygame
+
 from src.sort import Sorter
 
 

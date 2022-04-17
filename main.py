@@ -1,5 +1,10 @@
-import random, pygame, time
+import random
+import time
+
+import pygame
+
 from src.window import Window
+
 
 # TODO - update the readme to confirm animation is working !!!
 # application frontend class
