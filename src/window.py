@@ -7,7 +7,7 @@ from src.line_graph import Graph
 # game class
 class Window(Graph):
     # initialise the game
-    def __init__(self, width: int = 0, height: int = 0, Array: list[int] = list(0)) -> None:
+    def __init__(self, width: int = 0, height: int = 0, Array: list[int]) -> None:
         # define screen size
         self.width: int = width
         self.height: int = height
