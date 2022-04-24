@@ -1,16 +1,11 @@
-import random
-import time
-
-import pygame
-
+import random, pygame, time
 from src.window import Window
-
 
 # TODO - update the readme to confirm animation is working !!!
 # application frontend class
 class Application(Window):
     # initialise the application
-    def __init__(self, width: int = 0, height: int = 0) -> None:
+    def __init__(self, width: int, height: int) -> None:
         # define screen size
         self.width = width
 
@@ -22,7 +17,7 @@ class Application(Window):
         # create a clock object
         self.clock = pygame.time.Clock()
         # create a font object
-        self.font: pygame.Font = pygame.font.SysFont("monospace", 15)
+        self.font = pygame.font.SysFont("monospace", 15)
         # create a text object
         self.text = self.font.render("", 1, (255, 255, 255))
 
@@ -31,7 +26,7 @@ class Application(Window):
         # run the main loop
         while True:
             # get the time
-            self.clock.tick(int(60))
+            self.clock.tick(60)
             # get the events
             self.events()
 
@@ -59,6 +54,7 @@ class Application(Window):
                     self.sort_the_array()
                 if event.key == pygame.K_s:
                     self.animate()
+
                 if event.key == pygame.K_r:
                     self.reset()
 
@@ -72,7 +68,7 @@ class Application(Window):
         # set the tick rate to a lower value
         self.clock.tick(1)
         # make a generator for the bubble sort
-        for i in self.quick_sort():
+        for i in self.bubble_sort():
             # reassign the array to the generator yield
             self.array_to_sort = i
             self.draw_columns(self.create_columns(self.array_to_sort))
@@ -90,8 +86,9 @@ class Application(Window):
 
         self.draw_columns(self.create_columns(self.array_to_sort))
 
-    def get_random_array(self, width: int = 0, height: int = 0) -> list:
+    def get_random_array(self, height, width) -> list:
         return [random.randint(0, height) for i in range(0, width)]
+
 
 # main function
 if __name__ == "__main__":
