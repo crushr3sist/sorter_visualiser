@@ -6,7 +6,7 @@ from src.line_graph import Graph
 class Window(Graph):
     # initialise the game
 
-    def __init__(self, width: int, height: int, Array: list) -> None:
+    def __init__(self, width: int, height: int, Array: list[int]) -> None:
 
         # define screen size
         self.width = width
@@ -21,17 +21,16 @@ class Window(Graph):
         # initialise pygame
         pygame.init()
         # set the window size
-        size = (self.width, self.height)
+        size: tuple[int, int] = (self.width, self.height)
         # set the window title
         pygame.display.set_caption(" Sorting Visualiser ")
         # set the window icon
-        icon = pygame.image.load("icon.png")
+        icon: pygame.Surface = pygame.image.load("icon.png")
         pygame.display.set_icon(icon)
         # set the window size
-        screen = pygame.display.set_mode(size)
+        screen: pygame.Surface = pygame.display.set_mode(size)
         # return the screen
         return screen
-
 
 # main function
 if __name__ == "__main__":

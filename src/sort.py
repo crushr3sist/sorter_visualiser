@@ -5,7 +5,7 @@ from typing import *
 
 # make a sorter class
 class Sorter:
-    def __init__(self, arr: list[int]):
+    def __init__(self, arr: list[int]) -> None:
         self.arr = arr
 
     def bubble_sort(self) -> Iterator[list[int]]:
@@ -206,7 +206,7 @@ class Sorter:
                     yield self.arr
         yield self.arr
 
-    def swap(self, i, j):
+    def swap(self, i: int, j: int) -> None:
         self.arr[i], self.arr[j] = self.arr[j], self.arr[i]
 
     def comb_sort(self) -> Iterator[list[int]]:
